@@ -41,6 +41,15 @@ export const Cards = <T extends ICardProps>({
   vote_average,
   vote_count,
 }: T) => {
+  const { state, dispatch} = useContext(FavoriteContext);
+
+  const handleFavorite = () => {
+    console.log(state.favoriteMovies)
+    state.favoriteMovies.includes(id) 
+      ? dispatch({ type: 'REMOVE_FAVORITE', payload: id })
+      : dispatch({ type: 'ADD_FAVORITE', payload: id });
+  }
+
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -62,7 +71,11 @@ export const Cards = <T extends ICardProps>({
         <Button size="small">
           <Link to={`/details/${id}`}>Details</Link>
         </Button>
-        <Button size="small">Add to favorite</Button>
+        <Button size="small"
+          onClick={handleFavorite}
+        >{
+          state.favoriteMovies.includes(id) ? 'Remove from favorites' : 'Add to favorites'
+        }</Button>
       </CardActions>
     </Card>
   );
