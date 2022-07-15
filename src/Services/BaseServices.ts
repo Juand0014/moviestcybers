@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { enviorament } from '../Config';
 import { api } from '../Middleware';
+import { Id } from './services.types';
 
 const params = {
 	api_key: enviorament.apiKey,
@@ -12,7 +13,7 @@ const findAll = async(): Promise<AxiosResponse<any, any>> => {
 	return await api.get('/top_rated', { params });
 }
 
-const findOne = async(id: number): Promise<AxiosResponse<any, any>> => {
+const findOne = async(id: Id): Promise<AxiosResponse<any, any>> => {
 	return await api.get(`/${id}`, { params });
 }
 
