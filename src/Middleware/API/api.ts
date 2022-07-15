@@ -1,8 +1,8 @@
 import axion from 'axios';
-import { enviorament } from '../../Config';
+import { environment } from '../../Config';
 
 export const api = axion.create({
-	baseURL: enviorament.apiUrl,
+	baseURL: environment.apiUrl,
 	headers: {
 		'Content-Type': 'application/json',
 	},

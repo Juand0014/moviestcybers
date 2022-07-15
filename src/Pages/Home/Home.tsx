@@ -58,7 +58,7 @@ export const Home = () => {
 						? dataResult?.filter((item: any) => state.favoriteMovies.includes(item.id))
 							.map((item: any) => (
 								<Box key={item.id} sx={{paddingTop: 3}}>
-									<Cards key={item.id} {...item} />
+									<Cards key={item.id} {...item } />
 								</Box>
 							)) 
 						: dataResult?.map((item: any) => (

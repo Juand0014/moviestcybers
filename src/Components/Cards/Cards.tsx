@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { FavoriteContext } from '../../Contexts'; 
+import { FavoriteContext } from '../../Contexts';
+import { environment } from '../../Config';
 
 interface ICardProps {
   adult: boolean;
@@ -56,7 +57,7 @@ export const Cards = <T extends ICardProps>({
       <CardMedia
         component="img"
         height="140"
-        image={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+        image={`${environment.getImageUrl}${poster_path}`}
         alt="green iguana"
       />
       <CardContent>

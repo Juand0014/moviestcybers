@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios';
-import { enviorament } from '../Config';
+import { environment } from '../Config';
 import { api } from '../Middleware';
 import { Id } from './services.types';
 
 const params = {
-	api_key: enviorament.apiKey,
+	api_key: environment.apiKey,
 	page: 1,
 	language: 'en-US'
 }
