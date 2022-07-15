@@ -2,9 +2,10 @@ import services from "../../Services/BaseServices";
 import { useQuery } from "react-query";
 import Box from '@mui/material/Box';
 import { Cards } from "../../Components";
-import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
+import { Alert, AlertTitle, Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 import { FavoriteContext } from "../../Contexts";
+import { Satellite } from "@mui/icons-material";
 
 export const Home = () => {
 
@@ -51,11 +52,18 @@ export const Home = () => {
 						flexWrap: "wrap",
 						justifyContent: "space-evenly",
 						alignItems: "top",
+						paddingTop: "50px",
 					}}
 					> 
 					{
 						isFavorite 
-						? dataResult?.filter((item: any) => state.favoriteMovies.includes(item.id))
+						? 
+						!state.favoriteMovies.length 
+						? <Alert severity="info" sx={{width: '80%'}}>
+								<AlertTitle>Info</AlertTitle>
+								Mensaje — <strong>No hay favoritos!</strong>
+							</Alert> 
+						: dataResult?.filter((item: any) => state.favoriteMovies.includes(item.id))
 							.map((item: any) => (
 								<Box key={item.id} sx={{paddingTop: 3}}>
 									<Cards key={item.id} {...item } />

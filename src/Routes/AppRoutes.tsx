@@ -11,7 +11,7 @@ export const mainRoutes = [
 		component: <Details />,
 	},
 	{
-		path: "/details/:id",
+		path: "/details/:idMovies",
 		component: <Details />,
 	},
 	{

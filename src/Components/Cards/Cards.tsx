@@ -2,6 +2,8 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+import StarIcon from '@mui/icons-material/Star';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
@@ -45,7 +47,6 @@ export const Cards = <T extends ICardProps>({
   const { state, dispatch} = useContext(FavoriteContext);
 
   const handleFavorite = () => {
-    console.log(state.favoriteMovies)
     state.favoriteMovies.includes(id) 
       ? dispatch({ type: 'REMOVE_FAVORITE', payload: id })
       : dispatch({ type: 'ADD_FAVORITE', payload: id });
@@ -62,20 +63,20 @@ export const Cards = <T extends ICardProps>({
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {title}
+          {title} 
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {overview}
+          Average: {vote_average}
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">
-          <Link to={`/details/${id}`}>Details</Link>
+          <Link style={{textDecoration: "none"}} to={`/details/${id}`}>Details</Link>
         </Button>
         <Button size="small"
           onClick={handleFavorite}
         >{
-          state.favoriteMovies.includes(id) ? 'Remove from favorites' : 'Add to favorites'
+          state.favoriteMovies.includes(id) ? <StarIcon color={'warning'} /> : <StarBorderIcon />
         }</Button>
       </CardActions>
     </Card>
